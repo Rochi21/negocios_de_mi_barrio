@@ -37,7 +37,7 @@ class Inicio extends State<InicioArranque>
 
         body: SingleChildScrollView
         (
-          child: Row
+          child: Column
           (
             children: <Widget>
             [
