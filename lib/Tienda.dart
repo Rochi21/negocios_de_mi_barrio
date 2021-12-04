@@ -13,30 +13,19 @@ class Tienda extends StatefulWidget {
 
 class TiendaApp extends State<Tienda> {
   @override
-  Widget build(BuildContext context)
-  {
-    return MaterialApp
-      (
+  Widget build(BuildContext context) {
+    return MaterialApp(
       title: "Negocios de mi barrio",
-      home: Scaffold
-        (
-        appBar: AppBar
-          (
-            title: Text("Negocios de mi barrio"),
-
-            actions: [
-              RaisedButton
-                (
-                  onPressed: ()
-                  {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => Busqueda()));
-                  },
-
-                  disabledColor: Colors.amber,
-                  child: Image.asset('image/btnCarrito.png')
-              ),
-            ]
-        ),
+      home: Scaffold(
+        appBar: AppBar(title: Text("Negocios de mi barrio"), actions: [
+          RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => Busqueda()));
+              },
+              disabledColor: Colors.amber,
+              child: Image.asset('image/btnCarrito.png')),
+        ]),
       ),
     );
   }

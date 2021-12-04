@@ -1,12 +1,12 @@
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'Busqueda.dart';
 import 'Tienda.dart';
 
 void main() {
-  //Firebase.initializeApp();
-  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+  //WidgetsFlutterBinding.ensureInitialized();
   runApp(Barrio());
 }
 
@@ -55,7 +55,7 @@ class Inicio extends State<InicioArranque>
 
         body: SingleChildScrollView
         (
-          /*child: Center(
+          child: Center(
             child: StreamBuilder(
               stream:
               FirebaseFirestore.instance.collection("Tiendas").snapshots(),
@@ -107,11 +107,12 @@ class Inicio extends State<InicioArranque>
                                     child: Image.asset("image/"+snapshot.data!.docs[index]
                                         .get("rutaLogo"),),
                                   ),
-                                  ElevatedButton(
+                                  /*ElevatedButton(
                                       onPressed: () {
                                         String idDoc=snapshot.data!.docs[index].id;
-                                        Navigator.push(context, MaterialPageRoute(builder: (_) => Tienda(idDoc)));
-                                      }, child: Text("Entrar"))
+                                        buscarDoc(idDoc);
+                                        Navigator.push(context, MaterialPageRoute(builder: (_) => ShopOne(objTienda)));
+                                      }, child: Text("Entrar"))*/
                                 ],
                               ),
                             )
@@ -119,85 +120,9 @@ class Inicio extends State<InicioArranque>
                         ),
                       );
                     });
-
-                Widget buttonSection = Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildButtonColumn(color, Icons.call, 'Teléfono'),
-                      _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-                      _buildButtonColumn(color, Icons.web, 'WebSite'),
-                    ],
-                  ),
-                );
               },
             ),
-          ),*/
-
-        child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            new SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: RaisedButton
-                (
-                onPressed: ()
-                {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => Barrio()));
-                },
-
-                disabledColor: Colors.amber,
-                child: Image.asset('image/btnNegocios.png'),
-              )
-            ),
-
-            new SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: RaisedButton
-                (
-                  onPressed: ()
-                  {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => Barrio()));
-                  },
-
-                  disabledColor: Colors.amber,
-                  child: Image.asset('image/btnProductos.png')
-              ),
-            ),
-
-            new SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: RaisedButton
-                (
-                  onPressed: ()
-                  {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => Barrio()));
-                  },
-
-                  disabledColor: Colors.amber,
-                  child: Image.asset('image/btnNotificaciones.png')
-              ),
-            ),
-
-            new SizedBox(
-              width: 50.0,
-              height: 50.0,
-                child: RaisedButton
-                  (
-                    onPressed: ()
-                    {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => Barrio()));
-                    },
-
-                    disabledColor: Colors.amber,
-                    child: Image.asset('image/btnCuenta.png')
-                ),
-              ),
-          ],
-        ),
+          ),
         ),
 
         bottomNavigationBar: BottomNavigationBar(
@@ -215,6 +140,7 @@ class Inicio extends State<InicioArranque>
               label: 'Cuenta',
             ),
           ],
+
           //currentIndex: _selectedIndex,
           backgroundColor: Colors.black,
           selectedItemColor: Colors.amber[800],
