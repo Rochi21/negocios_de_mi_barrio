@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "259702750133",
+    "project_id": "negociosmibarrio-3b47c",
+    "storage_bucket": "negociosmibarrio-3b47c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259702750133:android:475e5beeecae45499e77fc",
+        "android_client_info": {
+          "package_name": "com.barrio.negocios.negocios_de_mi_barrio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259702750133-8p0off2k3urc86af98to98dr6fgmvfms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl3QSyNKHD1D2ntziVLQ_jI8N2F5k-m_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259702750133-8p0off2k3urc86af98to98dr6fgmvfms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,12 @@
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'Busqueda.dart';
+import 'Tienda.dart';
 
 void main() {
+  //Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(Barrio());
 }
 
@@ -32,48 +37,190 @@ class Inicio extends State<InicioArranque>
       (
         appBar: AppBar
         (
-          title: Text("Negocios"),
+          title: Text("Negocios de mi barrio"),
+
+          actions: [
+            RaisedButton
+              (
+                onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => Busqueda()));
+                },
+
+                //disabledColor: Colors.amber,
+                child: Image.asset('image/btnCarrito.png')
+            ),
+          ]
         ),
 
         body: SingleChildScrollView
         (
-          child: Column
-          (
-            children: <Widget>
-            [
-              Padding
-              (
-                padding:EdgeInsets.only(left:20, top: 20, right: 10, bottom: 0),
+          /*child: Center(
+            child: StreamBuilder(
+              stream:
+              FirebaseFirestore.instance.collection("Tiendas").snapshots(),
+              builder:
+                  (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) return CircularProgressIndicator();
+                return ListView.builder(
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return new Card(
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(15),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    /*1*/
+                                    child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        /*2*/
+                                        Container(
+                                          padding:
+                                          const EdgeInsets.only(bottom: 8),
+                                          child: Text(
+                                            snapshot.data!.docs[index]
+                                                .get("Nombre"),
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          snapshot.data!.docs[index]
+                                              .get("Descripcion"),
+                                          style: TextStyle(
+                                            color: Colors.grey[500],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  /*3*/
+                                  Container(
+                                    width: 70,
+                                    height: 70,
+                                    child: Image.asset("image/"+snapshot.data!.docs[index]
+                                        .get("rutaLogo"),),
+                                  ),
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        String idDoc=snapshot.data!.docs[index].id;
+                                        Navigator.push(context, MaterialPageRoute(builder: (_) => Tienda(idDoc)));
+                                      }, child: Text("Entrar"))
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    });
 
-                child: ElevatedButton
+                Widget buttonSection = Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildButtonColumn(color, Icons.call, 'Teléfono'),
+                      _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+                      _buildButtonColumn(color, Icons.web, 'WebSite'),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),*/
+
+        child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            new SizedBox(
+              width: 50.0,
+              height: 50.0,
+              child: RaisedButton
+                (
+                onPressed: ()
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => Barrio()));
+                },
+
+                disabledColor: Colors.amber,
+                child: Image.asset('image/btnNegocios.png'),
+              )
+            ),
+
+            new SizedBox(
+              width: 50.0,
+              height: 50.0,
+              child: RaisedButton
                 (
                   onPressed: ()
                   {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => Busqueda()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => Barrio()));
                   },
 
-                  child: Image.asset('image/btnBuscar.png')
+                  disabledColor: Colors.amber,
+                  child: Image.asset('image/btnProductos.png')
+              ),
+            ),
+
+            new SizedBox(
+              width: 50.0,
+              height: 50.0,
+              child: RaisedButton
+                (
+                  onPressed: ()
+                  {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => Barrio()));
+                  },
+
+                  disabledColor: Colors.amber,
+                  child: Image.asset('image/btnNotificaciones.png')
+              ),
+            ),
+
+            new SizedBox(
+              width: 50.0,
+              height: 50.0,
+                child: RaisedButton
+                  (
+                    onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => Barrio()));
+                    },
+
+                    disabledColor: Colors.amber,
+                    child: Image.asset('image/btnCuenta.png')
                 ),
               ),
+          ],
+        ),
+        ),
 
-              Padding
-              (
-                padding: EdgeInsets.only(left:0, top: 20, right: 20, bottom: 0),
-
-                child: TextField
-                (
-                  decoration: InputDecoration
-                  (
-                    border:OutlineInputBorder(),
-                    labelText: "Busqueda",
-                    hintText: "Buscar productos, marcas y más..."
-                  ),
-                )
-              )
-            ]
-          ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.store),
+              label: 'Negocios',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications_sharp),
+              label: 'Notificaciones',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              label: 'Cuenta',
+            ),
+          ],
+          //currentIndex: _selectedIndex,
+          backgroundColor: Colors.black,
+          selectedItemColor: Colors.amber[800],
+          //onTap: ,
         ),
       ),
-    );
+    );//
   }
 }
