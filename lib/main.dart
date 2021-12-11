@@ -3,6 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'Busqueda.dart';
 import 'Tienda.dart';
+import 'buscar.dart';
+import 'Shop.dart';
+import 'ShopRegister.dart';
 
 void main() {
   Firebase.initializeApp();
